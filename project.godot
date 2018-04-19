@@ -16,6 +16,11 @@ config/icon="res://icon.png"
 [physics]
 
 2d/default_gravity=0
+<<<<<<< HEAD
+=======
+2d/default_linear_damp=0.5
+2d/default_angular_damp=0
+>>>>>>> origin/master
 
 [rendering]
 
