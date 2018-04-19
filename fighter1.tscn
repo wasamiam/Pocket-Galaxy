@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends RigidBody2D
+
+var linearVelocityModule = 1
+var localLinearVelocityX
+var localLinearVelocityY
+onready var label = get_node(\"Label\")
+
+func _ready():
+	pass
+
+func _integrate_forces(state):
+	#apply_impulse(Vector2(0,0), Vector2(1,0).rotated(rotation) )
+	
+	attack_enemy()
+
+func attack_enemy():
+	face_target(find_target() )
+
+# Return target global coordinates
+# Right, it is the closest target.
+func find_target():
+	var target = get_closest_enemy(global_position)
+	if target == null:
+		return false
+	else:
+		return target.global_position
+
+# Adds angular velocity to face g_coords
+func face_target(g_position):
+	var att = angle_to_target(g_position)
+	print(name,\": \",att, \" rot: \", rotation)
+	#if angle_to_target < deg2rad(2) and angle_to_target > deg2rad(-2):
+	#	angular_velocity = 0
+	if att >= 0:
+		angular_velocity = 2
+	else:
+		angular_velocity = -2
+	
+	
+
+func angle_to_target(g_position):
+	var g_rot = position.angle_to_point(g_position)
+	var att
+	if g_rot >= 0:
+		att = PI - g_rot
+		att = att - rotation
+	else:
+		att = (-PI) - g_rot
+		att = att - rotation
+	if att >= PI:
+		att = att - (2*PI)
+	elif att <= -PI:
+		att = att + (2*PI)
+	return att
+
+# Accept global_position Vector2, Return closest enemy node or FALSE if no enemy group.
+func get_closest_enemy(g_position):
+	if !get_tree().has_group(\"enemies\"):
+		return null
+	
+	var enemies = get_tree().get_nodes_in_group(\"enemies\")
+	var current = enemies[0]
+	if current.name == name:
+		current = enemies[1]
+	for x in enemies:
+		if x.name != name:
+			if x.global_position.distance_to(global_position) < current.global_position.distance_to(global_position):
+				current = x
+	#print(name, \": \", current.name)
+	#label.name = current.name
+	return current
+
+func _unhandled_key_input(event):
+	pass"
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 0.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = 0.0
+script = SubResource( 1 )
+_sections_unfolded = [ "Angular", "Applied Forces" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+
+rotation = 1.57057
+polygon = PoolVector2Array( 0, -2, -1, 1, 1, 1 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+
+rotation = 1.57136
+build_mode = 0
+polygon = PoolVector2Array( 0, -2, -1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -18.0
+margin_right = 20.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
