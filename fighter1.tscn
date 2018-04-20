@@ -6,17 +6,17 @@ script/source = "extends RigidBody2D
 
 const bullet = preload(\"res://bullet.tscn\")
 
-var linearVelocityModule = 1
-var localLinearVelocityX
-var localLinearVelocityY
-onready var label = get_node(\"Label\")
-
 func _ready():
+	set_physics_process(false)
 	pass
 
 func _integrate_forces(state):
-	apply_impulse(Vector2(0,0), Vector2(1,0).rotated(rotation) )
+	apply_impulse(Vector2(0,0), Vector2(2,0).rotated(rotation) )
+	
 	attack_enemy()
+
+func _physics_process(delta):
+	#get_node(\"../CanvasLayer/Label\").text = String(linear_velocity)
 	pass
 
 func attack_enemy():
@@ -30,10 +30,15 @@ func attack_enemy():
 # Right, it is the closest target.
 func find_target():
 	var target = get_closest_enemy(global_position)
+	get_node(\"../CanvasLayer/Label\").text = String(target.name)
 	if target == null:
 		return null
 	else:
-		return target.global_position
+		return lead_target(target)
+
+func lead_target(target):
+	var vec = target.linear_velocity
+	return target.global_position + (vec * (1.0/60.0))
 
 # Adds angular velocity to face g_coords
 func face_target(g_position):
@@ -56,7 +61,7 @@ func fire():
 	b.global_position = get_node(\"Position2D\").global_position
 	b.rotation = rotation
 	get_parent().add_child(b)
-	b.apply_impulse(Vector2(0,0), Vector2(200,0).rotated(rotation) )
+	b.apply_impulse(Vector2(0,0), Vector2(300,0).rotated(rotation) )
 
 func angle_to_target(g_position):
 	
@@ -90,7 +95,7 @@ func get_closest_enemy(g_position):
 func _unhandled_key_input(event):
 	pass"
 
-[node name="RigidBody2D" type="RigidBody2D" index="0"]
+[node name="RigidBody2D" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -107,11 +112,11 @@ contact_monitor = false
 sleeping = false
 can_sleep = true
 linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
+linear_damp = 3.0
 angular_velocity = 0.0
 angular_damp = 0.0
 script = SubResource( 1 )
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision" ]
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear" ]
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="0"]
 

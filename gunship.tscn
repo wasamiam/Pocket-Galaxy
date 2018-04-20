@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Position2D.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 323.767, 50 )
+
+[node name="RigidBody2D" type="RigidBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 4
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 6.23323, 0 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
+
+polygon = PoolVector2Array( 330, -50, 330, 50, -320, 50, -320, -50 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Position2D" type="Position2D" parent="." index="2"]
+
+position = Vector2( 240, 70 )
+rotation = 1.5708
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position2D2" type="Position2D" parent="." index="3"]
+
+position = Vector2( 100, 70 )
+
+[node name="Position2D3" type="Position2D" parent="." index="4"]
+
+position = Vector2( -100, 70 )
+
+[node name="Position2D4" type="Position2D" parent="." index="5"]
+
+position = Vector2( -250, 70 )
+
+[node name="Position2D5" type="Position2D" parent="." index="6"]
+
+position = Vector2( -250, -70 )
+
+[node name="Position2D6" type="Position2D" parent="." index="7"]
+
+position = Vector2( -100, -70 )
+
+[node name="Position2D7" type="Position2D" parent="." index="8"]
+
+position = Vector2( 100, -70 )
+
+[node name="Position2D8" type="Position2D" parent="." index="9"]
+
+position = Vector2( 240, -70 )
+
+
