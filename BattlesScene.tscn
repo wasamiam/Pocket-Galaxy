@@ -3,7 +3,7 @@
 [ext_resource path="res://BattlesScene.gd" type="Script" id=1]
 [ext_resource path="res://fighter1.tscn" type="PackedScene" id=2]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -26,7 +26,7 @@ position = Vector2( 499.026, 274.292 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.25, 0.25 )
+zoom = Vector2( 0.5, 0.5 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
