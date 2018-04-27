@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Turret.gd" type="Script" id=1]
+[ext_resource path="res://TurretGun.gd" type="Script" id=2]
+
+[node name="TurretBase" type="Polygon2D" index="0"]
+
+polygon = PoolVector2Array( 1, 1, 1, -1, -1, -1, -1, 1 )
+uv = PoolVector2Array(  )
+color = Color( 0.238281, 0.238281, 0.238281, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+script = ExtResource( 1 )
+
+[node name="TurretGun" type="Position2D" parent="." index="0"]
+
+script = ExtResource( 2 )
+
+

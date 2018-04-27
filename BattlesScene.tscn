@@ -4,7 +4,7 @@
 [ext_resource path="res://fighter1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gunship.tscn" type="PackedScene" id=3]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -88,11 +88,10 @@ position = Vector2( 357.419, 295.622 )
 "enemies",
 ] instance=ExtResource( 2 )]
 
-position = Vector2( 357.419, 295.622 )
+position = Vector2( 444.393, 202.345 )
 
 [node name="RigidBody2D6" parent="." index="6" instance=ExtResource( 3 )]
 
-position = Vector2( 379.131, 125.264 )
-_sections_unfolded = [ "Collision" ]
+position = Vector2( 273.91, 163.678 )
 
 
