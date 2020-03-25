@@ -6,13 +6,31 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
+
+_global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
+} ]
+_global_script_class_icons={
+"GitAPI": ""
+}
 
 [application]
 
 config/name="Pocket Galaxy"
 run/main_scene="res://BattlesScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+global="*res://global.gd"
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
 
 [physics]
 
