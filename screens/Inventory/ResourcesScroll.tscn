@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://screens/Inventory/Item.tscn" type="PackedScene" id=2]
+
+
+[node name="Resources" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 97.0
+margin_bottom = 293.0
+custom_constants/vseparation = 1
+custom_constants/hseparation = 1
+columns = 2
+
+[node name="Control" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control2" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_left = 49.0
+margin_right = 97.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control3" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_top = 49.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control4" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_left = 49.0
+margin_top = 49.0
+margin_right = 97.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control5" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_top = 98.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control6" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_left = 49.0
+margin_top = 98.0
+margin_right = 97.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control7" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_top = 147.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control8" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_left = 49.0
+margin_top = 147.0
+margin_right = 97.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control9" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_top = 196.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control10" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_left = 49.0
+margin_top = 196.0
+margin_right = 97.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control11" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_top = 245.0
+margin_bottom = 293.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control12" parent="GridContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0.235294, 0.552941, 1, 1 )
+margin_left = 49.0
+margin_top = 245.0
+margin_right = 97.0
+margin_bottom = 293.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0

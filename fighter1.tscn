@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
 
+[sub_resource type="GDScript" id=2]
 script/source = "extends RigidBody2D
 
 const bullet = preload(\"res://bullet.tscn\")
@@ -60,7 +62,7 @@ func fire():
 	var b = bullet.instance()
 	b.global_position = get_node(\"Position2D\").global_position
 	b.rotation = rotation
-	get_parent().add_child(b)
+	get_parent().call_deferred(\"add_child\", b)
 	b.apply_impulse(Vector2(0,0), Vector2(300,0).rotated(rotation) )
 
 func angle_to_target(g_position):
@@ -93,57 +95,24 @@ func get_closest_enemy(g_position):
 	return current
 
 func _unhandled_key_input(event):
-	pass"
+	pass
+"
 
 [node name="RigidBody2D" type="RigidBody2D"]
-
-input_pickable = false
-collision_layer = 1
 collision_mask = 3
-mode = 0
-mass = 1.0
-friction = 0.0
-bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
+physics_material_override = SubResource( 1 )
 linear_damp = 3.0
-angular_velocity = 0.0
 angular_damp = 0.0
-script = SubResource( 1 )
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear" ]
+script = SubResource( 2 )
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
-
+[node name="Polygon2D" type="Polygon2D" parent="."]
 rotation = 1.57057
 polygon = PoolVector2Array( 0, -2, -1, 1, 1, 1 )
-uv = PoolVector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
-
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 rotation = 1.57136
-build_mode = 0
 polygon = PoolVector2Array( 0, -2, -1, 1, 1, 1 )
 
-[node name="Position2D" type="Position2D" parent="." index="2"]
-
+[node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 3.5, 0 )
-_sections_unfolded = [ "Transform" ]
-
-

@@ -21,12 +21,21 @@ _global_script_class_icons={
 [application]
 
 config/name="Pocket Galaxy"
-run/main_scene="res://BattlesScene.tscn"
+run/main_scene="res://screens/StartMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 global="*res://global.gd"
+
+[display]
+
+window/size/width=480
+window/size/height=270
+window/size/test_width=960
+window/size/test_height=540
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gdnative]
 
@@ -40,4 +49,9 @@ singletons=[ "res://git_api.gdnlib" ]
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/filters/anisotropic_filter_level=1
+quality/shadows/filter_mode=0
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
