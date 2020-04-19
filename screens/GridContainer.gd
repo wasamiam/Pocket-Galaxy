@@ -11,9 +11,14 @@ func _ready():
 	if number_of_children > 0:
 		var item_scene = preload("Inventory/Item.tscn")
 		for i in number_of_children:
-			add_child(item_scene.instance())
+			var child = item_scene.instance()
+			child.value = i + 1
+			add_child(child)
+			child.add_to_group("items")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
