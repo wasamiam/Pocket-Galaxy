@@ -26,7 +26,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-global="*res://global.gd"
+global="*res://globalscripts/global.gd"
 
 [display]
 
@@ -51,7 +51,7 @@ singletons=[ "res://git_api.gdnlib" ]
 
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-quality/filters/anisotropic_filter_level=1
 quality/shadows/filter_mode=0
+quality/filters/anisotropic_filter_level=1
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

@@ -1,0 +1,77 @@
+{
+  "steel": {
+    "value": 0,
+    "type": "metal",
+    "color": "gray"
+  },
+  "silver": {
+    "value": 0,
+    "type": "metal",
+    "color": "silver"
+  },
+  "gold": {
+    "value": 0,
+    "type": "metal",
+    "color": "yellow"
+  },
+  "iron": {
+    "value": 0,
+    "type": "metal",
+    "color": "light gray"
+  },
+  "copper": {
+    "value": 0,
+    "type": "metal",
+    "color": "brown"
+  },
+  "cherry": {
+    "value": 0,
+    "type": "wood",
+    "color": null
+  },
+  "oak": {
+    "value": 0,
+    "type": "wood",
+    "color": null
+  },
+  "beech": {
+    "value": 0,
+    "type": "wood",
+    "color": null
+  },
+  "granite": {
+    "value": 0,
+    "type": "stone",
+    "color": null
+  },
+  "marble": {
+    "value": 0,
+    "type": "stone",
+    "color": null
+  },
+  "obsidian": {
+    "value": 0,
+    "type": "stone",
+    "color": null
+  },
+  "diamond": {
+    "value": 0,
+    "type": "mineral",
+    "color": null
+  },
+  "ruby": {
+    "value": 0,
+    "type": "mineral",
+    "color": null
+  },
+  "emerald": {
+    "value": 0,
+    "type": "mineral",
+    "color": null
+  },
+  "sapphire": {
+    "value": 0,
+    "type": "mineral",
+    "color": null
+  }
+}

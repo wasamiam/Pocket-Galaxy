@@ -22,3 +22,7 @@ func _on_Map_Button_pressed():
 
 func _on_Inventory_Button_pressed():
 	var err = get_tree().change_scene("res://screens/Inventory/Inventory.tscn")
+
+
+func _on_Dev_Button_pressed():
+	var err = get_tree().change_scene("res://screens/devmode/DevMenu.tscn")

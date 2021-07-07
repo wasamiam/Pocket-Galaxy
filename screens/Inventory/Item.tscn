@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/m3x6.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://image/pixil-frame-0(1).png" type="Texture" id=2]
-[ext_resource path="res://image/background item card(1).png" type="Texture" id=3]
+[ext_resource path="res://images/pixil-frame-0(1).png" type="Texture" id=2]
+[ext_resource path="res://images/background item card(1).png" type="Texture" id=3]
 [ext_resource path="res://screens/Inventory/Item.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -98,4 +98,5 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="." to="." method="_on_Control_pressed"]
