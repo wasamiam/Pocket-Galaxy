@@ -16,4 +16,4 @@ func _ready():
 #func _process(delta):
 #	pass
 func item_is_pressed(item):
-	get_node("Panel/Label").text = String(item.value)
+	get_node("Panel/MarginContainer/Label").text = String(item.value)

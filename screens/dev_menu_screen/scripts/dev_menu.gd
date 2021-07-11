@@ -1,4 +1,4 @@
-extends OptionButton
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -8,11 +8,13 @@ extends OptionButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var global_script = get_node("/root/global")
-	for i in global_script.inventory_resources:
-		get_popup().add_item(i)
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_BackButton_pressed():
+	get_tree().change_scene_to(Navigator.title_screen)

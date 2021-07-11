@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://screens/shared_scenes/nav_bar/scripts/nav_bar.gd" type="Script" id=1]
+
+[node name="NavBar" type="PanelContainer"]
+anchor_right = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 13.0
+text = "Back"
+
+[node name="ScreenNameLabel" type="Label" parent="HBoxContainer"]
+margin_left = 24.0
+margin_top = 3.0
+margin_right = 454.0
+margin_bottom = 9.0
+size_flags_horizontal = 3
+text = "Screen Name"
+align = 1
+valign = 1
+
+[node name="MenuButton" type="Button" parent="HBoxContainer"]
+margin_left = 458.0
+margin_right = 480.0
+margin_bottom = 13.0
+text = "Menu"

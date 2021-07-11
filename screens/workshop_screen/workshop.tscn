@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://screens/workshop_screen/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://images/main_tilemap.tres" type="TileSet" id=2]
+[ext_resource path="res://screens/shared_scenes/nav_bar/nav_bar.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+
+[node name="Node" type="Node"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="BackgroundLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="NavBar" parent="GUILayer" instance=ExtResource( 3 )]
+
+[node name="HBoxContainer" parent="GUILayer/NavBar" index="0"]
+margin_bottom = 14.0
+
+[node name="BackButton" parent="GUILayer/NavBar/HBoxContainer" index="0"]
+margin_bottom = 14.0
+
+[node name="ScreenNameLabel" parent="GUILayer/NavBar/HBoxContainer" index="1"]
+margin_bottom = 11.0
+text = "Workshop"
+
+[node name="MenuButton" parent="GUILayer/NavBar/HBoxContainer" index="2"]
+margin_bottom = 14.0
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="TileMap" type="TileMap" parent="YSort"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 3, 1, 0, 6, 2, 0, 6, 3, 0, 6, 4, 0, 6, 5, 0, 6, 6, 0, 6, 7, 0, 6, 8, 0, 6, 9, 0, 524292, 65536, 0, 196608, 65537, 2, 262144, 65538, 2, 262144, 65539, 2, 262144, 65540, 2, 262144, 65541, 2, 262146, 65542, 2, 262147, 65543, 2, 262144, 65544, 2, 262144, 65545, 0, 196616, 131072, 0, 196608, 131073, 2, 131074, 131074, 2, 131075, 131075, 2, 131076, 131076, 2, 327685, 131077, 2, 327681, 131078, 2, 327682, 131079, 2, 327685, 131080, 2, 327685, 131081, 0, 196608, 196608, 0, 196608, 196609, 2, 196610, 196610, 2, 196611, 196611, 2, 196612, 196612, 2, 393221, 196613, 2, 393217, 196614, 2, 393218, 196615, 2, 393221, 196616, 2, 393221, 196617, 0, 196608, 262144, 0, 196608, 262145, 2, 131072, 262146, 2, 131072, 262147, 2, 131072, 262148, 2, 131072, 262149, 2, 131072, 262150, 2, 131072, 262151, 2, 131072, 262152, 2, 131072, 262153, 0, 196608, 327680, 0, 196608, 327681, 2, 131073, 327682, 2, 196608, 327683, 2, 196608, 327684, 2, 196608, 327685, 2, 196608, 327686, 2, 196608, 327687, 2, 196608, 327688, 2, 196608, 327689, 0, 196608, 393216, 0, 196608, 393217, 2, 131073, 393218, 2, 196608, 393219, 2, 196608, 393220, 2, 196608, 393221, 2, 196608, 393222, 2, 196608, 393223, 2, 196608, 393224, 2, 196608, 393225, 0, 196608, 458752, 0, 196608, 458753, 2, 131073, 458754, 2, 196608, 458755, 2, 196608, 458756, 2, 196608, 458757, 2, 196608, 458758, 2, 196608, 458759, 2, 196608, 458760, 2, 196608, 458761, 0, 196608, 524288, 0, 393217, 524289, 0, 393217, 524290, 0, 393217, 524291, 0, 393217, 524292, 0, 393217, 524293, 0, 393217, 524294, 0, 393217, 524295, 0, 393217, 524296, 0, 393217, 524297, 0, 393217, 589824, 0, 393217, 589825, 0, 393217, 589826, 0, 393217, 589827, 0, 393217, 589828, 0, 393217, 589829, 0, 393217, 589830, 0, 393217, 589831, 0, 393217, 589832, 0, 393217, 589833, 0, 393217, 655360, 0, 393217, 655361, 0, 393217, 655362, 0, 393217, 655363, 0, 393217, 655364, 0, 393217, 655365, 0, 393217, 655366, 0, 393217, 655367, 0, 393217, 655368, 0, 393217, 655369, 0, 393217 )
+
+[node name="Camera2D" type="Camera2D" parent="YSort/TileMap"]
+position = Vector2( 80, 80 )
+current = true
+
+[node name="KinematicBody2D" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 77.3507, 91.1386 )
+speed = 60
+
+[editable path="GUILayer/NavBar"]

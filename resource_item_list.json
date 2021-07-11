@@ -1,0 +1,27 @@
+{
+  "steel": {
+    "resource_type": "metal",
+    "color": "gray",
+    "base_value": 10
+  },
+  "silver": {
+    "resource_type": "metal",
+    "color": "silver",
+    "base_value": 15
+  },
+  "gold": {
+    "resource_type": "metal",
+    "color": "yellow",
+    "base_value": 20
+  },
+  "iron": {
+    "resource_type": "metal",
+    "color": "light gray",
+    "base_value": 5
+  },
+  "copper": {
+    "resource_type": "metal",
+    "color": "brown",
+    "base_value": 5
+  }
+}

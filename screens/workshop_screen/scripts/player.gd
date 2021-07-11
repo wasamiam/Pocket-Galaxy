@@ -28,6 +28,7 @@ func set_animation():
 		_animated_sprite.play("Up")
 	else:
 		_animated_sprite.stop()
+		_animated_sprite.frame = 1
 	
 func _physics_process(delta):
 	get_input()
