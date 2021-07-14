@@ -38,7 +38,7 @@ __meta__ = {
 [node name="Version" type="Label" parent="MarginContainer/HBoxContainer"]
 margin_top = 6.0
 margin_right = 28.0
-margin_bottom = 12.0
+margin_bottom = 11.0
 text = "Version:"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -48,7 +48,7 @@ __meta__ = {
 margin_left = 32.0
 margin_top = 6.0
 margin_right = 32.0
-margin_bottom = 12.0
+margin_bottom = 11.0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
