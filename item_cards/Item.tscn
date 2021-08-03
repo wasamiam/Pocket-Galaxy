@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://item_cards/scripts/Item.gd" type="Script" id=1]
+[ext_resource path="res://item_cards/scripts/item.gd" type="Script" id=1]
 [ext_resource path="res://images/pixil-frame-0(1).png" type="Texture" id=2]
 [ext_resource path="res://images/background item card(1).png" type="Texture" id=3]
 [ext_resource path="res://fonts/m3x6.ttf" type="DynamicFontData" id=4]
@@ -81,15 +81,6 @@ size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
-visible = false
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
 self_modulate = Color( 1, 0.968627, 0.164706, 1 )

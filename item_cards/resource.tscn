@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://item_cards/scripts/resource.gd" type="Script" id=2]
+[ext_resource path="res://images/pixil-frame-0(1).png" type="Texture" id=3]
+[ext_resource path="res://images/background item card(1).png" type="Texture" id=4]
+
+[node name="TextureButton" type="TextureButton"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_filter = 1
+texture_normal = ExtResource( 4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="Label" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 18.0
+margin_bottom = 9.0
+text = "type"
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Age" type="Label" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -13.0
+margin_top = 3.0
+margin_right = -1.0
+margin_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "age"
+align = 2
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quality" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -8.0
+margin_right = 47.0
+margin_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "quality"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="." to="." method="_on_item_pressed"]
