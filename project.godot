@@ -29,6 +29,8 @@ config/version=0.1
 
 global="*res://global_scripts/global.gd"
 Navigator="*res://global_scripts/navigator.gd"
+Inventory="*res://global_scripts/inventory.gd"
+ItemDatabase="*res://global_scripts/item_database.gd"
 
 [display]
 
@@ -38,6 +40,10 @@ window/size/test_width=960
 window/size/test_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
 
 [gdnative]
 

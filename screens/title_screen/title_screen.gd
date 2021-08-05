@@ -15,6 +15,7 @@ func _ready():
 		$CenterContainer/VBoxContainer/DevMenuButton.visible = true
 	
 	$MarginContainer/HBoxContainer/VersionData.text = String(ProjectSettings.get_setting("application/config/version"))
+	
 
 
 

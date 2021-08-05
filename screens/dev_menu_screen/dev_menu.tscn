@@ -129,6 +129,20 @@ margin_right = 298.0
 margin_bottom = 18.0
 text = "Add"
 
+[node name="Clear Inventory" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 480.0
+margin_bottom = 114.0
+custom_constants/margin_top = 20
+
+[node name="Button" type="Button" parent="VBoxContainer/Clear Inventory"]
+margin_left = 208.0
+margin_top = 20.0
+margin_right = 272.0
+margin_bottom = 34.0
+size_flags_horizontal = 4
+text = "Clear Inventory"
+
 [connection signal="pressed" from="VBoxContainer/NavBar/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/AddResourceButton" to="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" method="_on_AddResourceButton_pressed"]
 

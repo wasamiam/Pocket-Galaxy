@@ -30,9 +30,9 @@ func set_animation():
 		_animated_sprite.stop()
 		_animated_sprite.frame = 1
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
 	velocity = move_and_slide(velocity)
 	
-func _process(delta):
+func _process(_delta):
 	set_animation()
