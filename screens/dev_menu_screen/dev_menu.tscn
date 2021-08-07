@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://screens/dev_menu_screen/scripts/HBoxContainer.gd" type="Script" id=1]
 [ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFont" id=2]
 [ext_resource path="res://screens/dev_menu_screen/scripts/dev_menu.gd" type="Script" id=3]
 [ext_resource path="res://screens/shared_scenes/nav_bar/nav_bar.tscn" type="PackedScene" id=4]
 
-[node name="Control" type="Control"]
+[node name="DevMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+resource_selection = NodePath("VBoxContainer/AddResources/CenterContainer/VBoxContainer/ResourceSelection")
+part_selection = NodePath("VBoxContainer/AddPart/CenterContainer/VBoxContainer/PartSelection")
+product_selection = NodePath("VBoxContainer/AddProduct/CenterContainer/VBoxContainer/ProductSelection")
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -25,6 +27,7 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,23 +37,11 @@ anchor_right = 0.0
 margin_right = 480.0
 margin_bottom = 14.0
 
-[node name="HBoxContainer" parent="VBoxContainer/NavBar" index="0"]
-margin_bottom = 14.0
-
-[node name="BackButton" parent="VBoxContainer/NavBar/HBoxContainer" index="0"]
-margin_bottom = 14.0
-
-[node name="MarginContainer" parent="VBoxContainer/NavBar/HBoxContainer" index="1"]
-margin_bottom = 14.0
-
 [node name="ScreenNameLabel" parent="VBoxContainer/NavBar/HBoxContainer/MarginContainer" index="0"]
-margin_top = 2.0
-margin_bottom = 14.0
-
-[node name="MenuButton" parent="VBoxContainer/NavBar/HBoxContainer" index="2"]
-margin_bottom = 14.0
+text = "Dev Menu"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+visible = false
 margin_top = 18.0
 margin_right = 480.0
 margin_bottom = 76.0
@@ -75,13 +66,12 @@ __meta__ = {
 margin_right = 460.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 2 )
-text = "Add Resources to Inventoy"
+text = "Add Resources to Inventory"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 20.0
 margin_right = 460.0
 margin_bottom = 38.0
-script = ExtResource( 1 )
 
 [node name="TypeLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_top = 5.0
@@ -129,13 +119,97 @@ margin_right = 298.0
 margin_bottom = 18.0
 text = "Add"
 
-[node name="Clear Inventory" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 80.0
+[node name="AddResources" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 30.0
 margin_right = 480.0
-margin_bottom = 114.0
+margin_bottom = 42.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/AddResources"]
+margin_left = 5.0
+margin_right = 475.0
+margin_bottom = 12.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AddResources/CenterContainer"]
+margin_left = 131.0
+margin_right = 339.0
+margin_bottom = 12.0
+
+[node name="Label" type="Label" parent="VBoxContainer/AddResources/CenterContainer/VBoxContainer"]
+margin_right = 208.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 2 )
+text = "Add Resources to Inventory"
+
+[node name="ResourceSelection" type="HBoxContainer" parent="VBoxContainer/AddResources/CenterContainer/VBoxContainer"]
+margin_top = 12.0
+margin_right = 208.0
+margin_bottom = 12.0
+
+[node name="AddPart" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 58.0
+margin_right = 480.0
+margin_bottom = 70.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/AddPart"]
+margin_left = 5.0
+margin_right = 475.0
+margin_bottom = 12.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AddPart/CenterContainer"]
+margin_left = 151.0
+margin_right = 319.0
+margin_bottom = 12.0
+
+[node name="Label" type="Label" parent="VBoxContainer/AddPart/CenterContainer/VBoxContainer"]
+margin_right = 168.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 2 )
+text = "Add Part to Inventory"
+
+[node name="PartSelection" type="HBoxContainer" parent="VBoxContainer/AddPart/CenterContainer/VBoxContainer"]
+margin_top = 12.0
+margin_right = 168.0
+margin_bottom = 12.0
+
+[node name="AddProduct" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 86.0
+margin_right = 480.0
+margin_bottom = 98.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/AddProduct"]
+margin_left = 5.0
+margin_right = 475.0
+margin_bottom = 12.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AddProduct/CenterContainer"]
+margin_left = 139.0
+margin_right = 331.0
+margin_bottom = 12.0
+
+[node name="Label" type="Label" parent="VBoxContainer/AddProduct/CenterContainer/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 2 )
+text = "Add Product to Inventory"
+
+[node name="ProductSelection" type="HBoxContainer" parent="VBoxContainer/AddProduct/CenterContainer/VBoxContainer"]
+margin_top = 12.0
+margin_right = 192.0
+margin_bottom = 12.0
+
+[node name="Clear Inventory" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 114.0
+margin_right = 480.0
+margin_bottom = 148.0
 custom_constants/margin_top = 20
 
-[node name="Button" type="Button" parent="VBoxContainer/Clear Inventory"]
+[node name="ClearInventoryButton" type="Button" parent="VBoxContainer/Clear Inventory"]
 margin_left = 208.0
 margin_top = 20.0
 margin_right = 272.0
@@ -143,7 +217,6 @@ margin_bottom = 34.0
 size_flags_horizontal = 4
 text = "Clear Inventory"
 
-[connection signal="pressed" from="VBoxContainer/NavBar/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/AddResourceButton" to="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" method="_on_AddResourceButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/Clear Inventory/ClearInventoryButton" to="." method="_on_ClearInventoryButton_pressed"]
 
 [editable path="VBoxContainer/NavBar"]

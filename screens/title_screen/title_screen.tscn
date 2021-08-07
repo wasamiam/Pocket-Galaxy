@@ -1,12 +1,134 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://screens/title_screen/title_screen.gd" type="Script" id=1]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFont" id=3]
+[ext_resource path="res://images/backgrounds/start_menu_bg.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dev_menu_button = NodePath("VBoxContainer/CenterContainer/VBoxContainer/DevMenuButton")
+version_data_label = NodePath("MarginContainer/HBoxContainer/VersionData")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+texture = ExtResource( 4 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 80.0
+custom_constants/margin_top = 32
+custom_constants/margin_bottom = 16
+
+[node name="Title" type="Label" parent="VBoxContainer/MarginContainer"]
+margin_top = 32.0
+margin_right = 480.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Space-Time"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 480.0
+margin_bottom = 208.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer"]
+margin_left = 182.0
+margin_right = 298.0
+margin_bottom = 124.0
+custom_constants/separation = 8
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main Button" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+margin_right = 116.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+disabled = true
+text = "Main (Enroute)"
+
+[node name="MapButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 116.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 3 )
+disabled = true
+text = "Map"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CraftButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 116.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 3 )
+text = "Craft"
+
+[node name="Trade Button" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 116.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 3 )
+disabled = true
+text = "Trade"
+
+[node name="Inventory Button" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 116.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 3 )
+text = "Inventory"
+
+[node name="DevMenuButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+visible = false
+margin_top = 185.0
+margin_right = 228.0
+margin_bottom = 207.0
+custom_fonts/font = ExtResource( 3 )
+text = "DevMenu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 110.0
+margin_right = 116.0
+margin_bottom = 124.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,88 +172,9 @@ margin_top = 5.0
 margin_right = 32.0
 margin_bottom = 13.0
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 126.0
-margin_top = 31.0
-margin_right = 354.0
-margin_bottom = 238.0
-custom_constants/separation = 15
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Main Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_right = 228.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 3 )
-disabled = true
-text = "Main (Enroute)"
-
-[node name="MapButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 37.0
-margin_right = 228.0
-margin_bottom = 59.0
-custom_fonts/font = ExtResource( 3 )
-disabled = true
-text = "Map"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CraftButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 74.0
-margin_right = 228.0
-margin_bottom = 96.0
-custom_fonts/font = ExtResource( 3 )
-text = "Craft"
-
-[node name="Trade Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 111.0
-margin_right = 228.0
-margin_bottom = 133.0
-custom_fonts/font = ExtResource( 3 )
-disabled = true
-text = "Trade"
-
-[node name="Inventory Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 148.0
-margin_right = 228.0
-margin_bottom = 170.0
-custom_fonts/font = ExtResource( 3 )
-text = "Inventory"
-
-[node name="DevMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
-margin_top = 185.0
-margin_right = 228.0
-margin_bottom = 207.0
-custom_fonts/font = ExtResource( 3 )
-text = "DevMenu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 185.0
-margin_right = 228.0
-margin_bottom = 207.0
-custom_fonts/font = ExtResource( 3 )
-text = "Quit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CraftButton" to="." method="_on_CraftButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Inventory Button" to="." method="_on_InventoryButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/DevMenuButton" to="." method="_on_DevMenuButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/CraftButton" to="." method="_on_CraftButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/Inventory Button" to="." method="_on_InventoryButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/DevMenuButton" to="." method="_on_DevMenuButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

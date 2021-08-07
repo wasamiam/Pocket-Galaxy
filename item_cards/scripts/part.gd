@@ -22,7 +22,7 @@ func setup(p_resource_name:String, p_resource_type:String, p_quality:String, p_c
 	$Quality.text = quality
 	color = p_color
 	base_value = p_base_value
-	value = base_value * global.quality[quality]
+	value = base_value * Inventory.quality[quality]
 
 	$CenterContainer/TextureRect.set_self_modulate(ColorN(color,1))
 	

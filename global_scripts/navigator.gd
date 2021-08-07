@@ -1,8 +1,21 @@
 extends Node
 
-# This contains the NodePaths to every screen. In the future, this be a dedicated screen navigator.
 
-onready var title_screen = preload("res://screens/title_screen/title_screen.tscn")
-onready var dev_menu_screen = preload("res://screens/dev_menu_screen/dev_menu.tscn")
-onready var inventory_screen = preload("res://screens/inventory_screen/inventory.tscn")
-onready var workshop_screen = preload("res://screens/workshop_screen/workshop.tscn")
+#onready var title_screen = preload("res://screens/title_screen/title_screen.tscn")
+#onready var dev_menu_screen = preload("res://screens/dev_menu_screen/dev_menu.tscn")
+#onready var inventory_screen = preload("res://screens/inventory_screen/inventory.tscn")
+#onready var workshop_screen = preload("res://screens/workshop_screen/workshop.tscn")
+var title_screen = "res://screens/title_screen/title_screen.tscn"
+var dev_menu_screen = "res://screens/dev_menu_screen/dev_menu.tscn"
+var inventory_screen = "res://screens/inventory_screen/inventory.tscn"
+var workshop_screen = "res://screens/workshop_screen/workshop.tscn"
+var stack:Array
+
+func push(scene:String):
+	stack.push_front(get_tree().current_scene.filename)
+	get_tree().change_scene(scene)
+	print("Push: ", stack)
+
+func pop():
+	get_tree().change_scene(stack.pop_front())
+	print("Pop: ", stack)

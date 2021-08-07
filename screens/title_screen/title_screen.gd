@@ -1,32 +1,29 @@
 extends Control
 
+export var dev_menu_button:NodePath
+export var version_data_label:NodePath
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	if not OS.is_debug_build():
-		$CenterContainer/VBoxContainer/DevMenuButton.visible = false
+		get_node(dev_menu_button).visible = false
 	else:
-		$CenterContainer/VBoxContainer/DevMenuButton.visible = true
+		get_node(dev_menu_button).visible = true
 	
-	$MarginContainer/HBoxContainer/VersionData.text = String(ProjectSettings.get_setting("application/config/version"))
+	get_node(version_data_label).text = String(ProjectSettings.get_setting("application/config/version"))
 	
 
 
 
 func _on_InventoryButton_pressed():
-	add_child(Navigator.inventory_screen.instance())
+	Navigator.push(Navigator.inventory_screen)
+	#add_child(Navigator.inventory_screen.instance())
 
 func _on_DevMenuButton_pressed():
-	get_tree().change_scene_to(Navigator.dev_menu_screen)
+	Navigator.push(Navigator.dev_menu_screen)
 
 func _on_CraftButton_pressed():
-	get_tree().change_scene_to(Navigator.workshop_screen)
+	Navigator.push(Navigator.workshop_screen)
 
 func _on_QuitButton_pressed():
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)

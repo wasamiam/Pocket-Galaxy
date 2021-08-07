@@ -12,29 +12,29 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 use_parent_material = true
 margin_right = 480.0
-margin_bottom = 12.0
+margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BackButton" type="Button" parent="HBoxContainer"]
 margin_right = 20.0
-margin_bottom = 12.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 0, 12 )
 text = "Back"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 margin_left = 24.0
 margin_right = 454.0
-margin_bottom = 12.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_bottom = -2
 
 [node name="ScreenNameLabel" type="Label" parent="HBoxContainer/MarginContainer"]
-margin_top = 1.0
+margin_top = 2.0
 margin_right = 430.0
-margin_bottom = 13.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 0, 12 )
 size_flags_horizontal = 3
 text = "Screen Name"
@@ -44,5 +44,7 @@ valign = 1
 [node name="MenuButton" type="Button" parent="HBoxContainer"]
 margin_left = 458.0
 margin_right = 480.0
-margin_bottom = 12.0
+margin_bottom = 14.0
 text = "Menu"
+
+[connection signal="pressed" from="HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

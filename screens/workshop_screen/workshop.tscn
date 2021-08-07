@@ -30,9 +30,12 @@ margin_bottom = 14.0
 [node name="BackButton" parent="GUILayer/NavBar/HBoxContainer" index="0"]
 margin_bottom = 14.0
 
-[node name="ScreenNameLabel" parent="GUILayer/NavBar/HBoxContainer" index="1"]
-margin_bottom = 11.0
-text = "Workshop"
+[node name="MarginContainer" parent="GUILayer/NavBar/HBoxContainer" index="1"]
+margin_bottom = 14.0
+
+[node name="ScreenNameLabel" parent="GUILayer/NavBar/HBoxContainer/MarginContainer" index="0"]
+margin_top = 2.0
+margin_bottom = 14.0
 
 [node name="MenuButton" parent="GUILayer/NavBar/HBoxContainer" index="2"]
 margin_bottom = 14.0

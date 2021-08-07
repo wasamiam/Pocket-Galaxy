@@ -1,7 +1,8 @@
 extends Node
 
-# Include global stats
 enum ResourceType {METAL, WOOD, STONE, MINERAL}
+enum ItemType {RESOURCE, PART, PRODUCT}
+
 var quality = {
 	"poor":0.8,
 	"standard":1.0,
@@ -13,6 +14,14 @@ var age = {
 	"used":0.5,
 	"like new":0.8,
 	"new":1.0
+}
+
+var item_template = {
+	"name":"",
+	"resource_type":"",
+	"quality":"",
+	"color":"",
+	"base_value":0
 }
 
 var resources:Array
@@ -43,7 +52,7 @@ func _load():
 	parts = inventory.parts
 	products = inventory.products
 
-func save():
+func _save():
 	var inventory = {"resources":resources ,"parts":parts ,"products":products }
 	
 	var file = File.new()
@@ -52,3 +61,23 @@ func save():
 	
 	file.store_line(to_json(inventory))
 	file.close()
+
+func add_item(dictionary:Dictionary, item_type:int):
+	match item_type:
+		ItemType.RESOURCE:
+			resources.append(dictionary)
+		ItemType.PART:
+			parts.append(dictionary)
+		ItemType.PRODUCT:
+			products.append(dictionary)
+		_:
+			assert(false, "item_type is out of bounds.")
+	
+	_save()
+
+func clear_inventory():
+	resources = []
+	parts = []
+	products = []
+	
+	_save()

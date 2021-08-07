@@ -17,7 +17,7 @@ func update_info(item:Node):
 	get_node(type_label).text = String(item.resource_type)
 	get_node(quality_label).text = String(item.quality)
 	get_node(base_value_label).text = String(item.base_value)
-	get_node(quality_data_label).text = String(global.quality[item.quality])
+	get_node(quality_data_label).text = String(Inventory.quality[item.quality])
 	get_node(value_label).text = String(item.value)
 	
 	if get_node(item_container).get_child_count() == 0:

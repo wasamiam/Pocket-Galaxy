@@ -61,22 +61,8 @@ anchor_right = 0.0
 margin_right = 480.0
 margin_bottom = 14.0
 
-[node name="HBoxContainer" parent="PanelContainer/VBoxContainer/NavBar" index="0"]
-margin_bottom = 14.0
-
-[node name="BackButton" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer" index="0"]
-margin_bottom = 14.0
-
-[node name="MarginContainer" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer" index="1"]
-margin_bottom = 14.0
-
 [node name="ScreenNameLabel" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer/MarginContainer" index="0"]
-margin_top = 2.0
-margin_bottom = 14.0
 text = "Inventory"
-
-[node name="MenuButton" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer" index="2"]
-margin_bottom = 14.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 margin_top = 18.0

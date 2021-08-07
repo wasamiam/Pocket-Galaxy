@@ -24,5 +24,4 @@ func _on_AddResourceButton_pressed():
 		"base_value":Inventory.item_database[r_name].base_value
 	}
 	
-	Inventory.resources.append(item_dict)
-	Inventory.save_inventory()
+	Inventory.add_item(item_dict, Inventory.ItemType.RESOURCE)
