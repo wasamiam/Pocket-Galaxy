@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://item_cards/item_template.tscn" type="PackedScene" id=1]
+[ext_resource path="res://item_cards/scripts/recipe.gd" type="Script" id=2]
+
+[node name="Recipe" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+recipe = NodePath("Recipe")
+
+[node name="Recipe" type="Label" parent="." index="1"]
+margin_right = 48.0
+margin_bottom = 10.0
+text = "Recipe"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" parent="." index="2"]
+visible = false
+
+[node name="Quality" parent="." index="3"]
+visible = false

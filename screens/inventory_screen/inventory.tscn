@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://screens/inventory_screen/scripts/info_panel.gd" type="Script" id=1]
 [ext_resource path="res://screens/inventory_screen/scripts/resource_grid.gd" type="Script" id=2]
 [ext_resource path="res://themes/main_theme.tres" type="Theme" id=3]
 [ext_resource path="res://screens/inventory_screen/scripts/inventory.gd" type="Script" id=4]
-[ext_resource path="res://screens/shared_scenes/nav_bar/nav_bar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://screens/inventory_screen/scripts/item_grid.gd" type="Script" id=6]
 [ext_resource path="res://fonts/default_font32.tres" type="DynamicFont" id=7]
 [ext_resource path="res://screens/inventory_screen/scripts/part_grid.gd" type="Script" id=8]
@@ -40,6 +39,7 @@ border_width_bottom = 1
 [node name="Inventory" type="CanvasLayer"]
 script = ExtResource( 4 )
 info_panel = NodePath("PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel")
+tab_container = NodePath("PanelContainer/VBoxContainer/HBoxContainer/TabContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
@@ -56,13 +56,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NavBar" parent="PanelContainer/VBoxContainer" instance=ExtResource( 5 )]
-anchor_right = 0.0
+[node name="NavBar" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 margin_right = 480.0
 margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ScreenNameLabel" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer/MarginContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/NavBar"]
+use_parent_material = true
+margin_right = 480.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer"]
+margin_right = 453.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_bottom = -2
+
+[node name="ScreenNameLabel" type="Label" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer/MarginContainer"]
+margin_top = 2.0
+margin_right = 453.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 12 )
+size_flags_horizontal = 3
 text = "Inventory"
+align = 1
+valign = 1
+
+[node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer/NavBar/HBoxContainer"]
+margin_left = 457.0
+margin_right = 480.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 12 )
+text = "Close"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 margin_top = 18.0
@@ -96,7 +127,6 @@ margin_bottom = -1.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,7 +155,7 @@ margin_bottom = -1.0
 [node name="PartGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Parts"]
 script = ExtResource( 8 )
 
-[node name="Items" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer"]
+[node name="Products" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -137,7 +167,7 @@ rect_min_size = Vector2( 192, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ItemGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Items"]
+[node name="ProductGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Products"]
 script = ExtResource( 6 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
@@ -287,30 +317,29 @@ uppercase = true
 [node name="ItemContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel/VBoxContainer"]
 margin_top = 61.0
 margin_right = 232.0
-margin_bottom = 120.0
+margin_bottom = 116.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel/VBoxContainer/ItemContainer"]
 visible = false
 margin_left = 91.0
-margin_top = 4.0
+margin_top = 2.0
 margin_right = 141.0
-margin_bottom = 54.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 50, 50 )
 custom_styles/panel = SubResource( 4 )
 
 [node name="Description" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel/VBoxContainer"]
-margin_top = 124.0
+margin_top = 120.0
 margin_right = 232.0
 margin_bottom = 175.0
-custom_constants/margin_top = 3
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel/VBoxContainer/Description"]
-margin_top = 3.0
 margin_right = 232.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 0, 48 )
+margin_bottom = 55.0
 text = "Testing"
 
 [node name="ValuePanel" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel/VBoxContainer"]
@@ -470,11 +499,11 @@ valign = 1
 
 [node name="SelectButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel/VBoxContainer"]
 visible = false
-margin_top = 228.0
+margin_top = 215.0
 margin_right = 232.0
-margin_bottom = 242.0
+margin_bottom = 229.0
 text = "Select"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/NavBar/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
-
-[editable path="PanelContainer/VBoxContainer/NavBar"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/NavBar/HBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel" to="." method="_on_item_selected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel/VBoxContainer/SelectButton" to="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/InfoPanel" method="_on_SelectButton_pressed"]

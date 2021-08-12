@@ -1,9 +1,16 @@
 {
   "assembly_table": {
     "table": {
+      "name": "Table",
       "recipe": {
         "table_top": 1,
         "table_leg": 4
+      }
+    },
+    "table_top": {
+      "name": "Table Top",
+      "recipe": {
+        "wood_plank": 4
       }
     }
   }

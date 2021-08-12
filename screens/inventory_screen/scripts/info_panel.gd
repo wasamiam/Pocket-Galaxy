@@ -1,5 +1,7 @@
 extends MarginContainer
 
+signal item_selected(item)
+
 export(NodePath) var name_label
 export(NodePath) var type_label
 export(NodePath) var quality_label
@@ -9,16 +11,16 @@ export(NodePath) var value_label
 export(NodePath) var select_button
 export(NodePath) var item_container
 
-func _ready():
-	pass # Replace with function body.
+var selected_item
 
 func update_info(item:Node):
-	get_node(name_label).text = String(item.resource_name)
-	get_node(type_label).text = String(item.resource_type)
-	get_node(quality_label).text = String(item.quality)
-	get_node(base_value_label).text = String(item.base_value)
-	get_node(quality_data_label).text = String(Inventory.quality[item.quality])
-	get_node(value_label).text = String(item.value)
+	selected_item = item
+	get_node(name_label).text = String(item.properties.name)
+	get_node(type_label).text = String(item.properties.resource_type)
+	get_node(quality_label).text = String(item.properties.quality)
+	get_node(base_value_label).text = String(item.properties.base_value)
+	get_node(quality_data_label).text = String(Inventory.quality[item.properties.quality])
+	get_node(value_label).text = String(item.properties.value)
 	
 	if get_node(item_container).get_child_count() == 0:
 		get_node(item_container).add_child(item.duplicate())
@@ -27,4 +29,7 @@ func update_info(item:Node):
 		get_node(item_container).add_child(item.duplicate())
 
 func set_selection_visible(is_visible:bool):
-	select_button.visible = is_visible
+	get_node(select_button).visible = is_visible
+
+func _on_SelectButton_pressed():
+	emit_signal("item_selected", selected_item)
