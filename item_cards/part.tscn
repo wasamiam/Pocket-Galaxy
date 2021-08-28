@@ -5,4 +5,18 @@
 
 [node name="Part" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-item_image = NodePath("")
+
+[node name="Name" type="Label" parent="." index="1"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 47.0
+margin_bottom = 9.0
+text = "Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" parent="." index="2"]
+visible = false

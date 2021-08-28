@@ -1,7 +1,5 @@
 extends GridContainer
 
-
-
 func _ready():
 		var resource_item_card = preload("res://item_cards/resource.tscn")
 		for i in Inventory.resources:

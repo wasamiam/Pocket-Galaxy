@@ -16,8 +16,9 @@ func _ready():
 
 
 func _on_InventoryButton_pressed():
-	Navigator.push(Navigator.inventory_screen)
-	#add_child(Navigator.inventory_screen.instance())
+	var inventory = load(Navigator.inventory_screen).instance()
+	inventory.load_items()
+	add_child(inventory)
 
 func _on_DevMenuButton_pressed():
 	Navigator.push(Navigator.dev_menu_screen)

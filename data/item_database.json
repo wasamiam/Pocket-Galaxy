@@ -1,36 +1,66 @@
 {
   "resources": {
     "steel": {
+      "name": "Steel",
       "resource_type": "metal",
       "color": "lightsteelblue",
-      "base_value": 10
+      "base_value": 10,
+      "image": "res://images/items/resources/metal_ingot.png",
+      "description": "Metal ingots used to make parts."
     },
     "silver": {
+      "name": "Silver",
       "resource_type": "metal",
       "color": "silver",
-      "base_value": 15
+      "base_value": 15,
+      "image": "res://images/items/resources/metal_ingot.png",
+      "description": "Metal ingots used to make parts."
     },
     "gold": {
+      "name": "Gold",
       "resource_type": "metal",
       "color": "gold",
-      "base_value": 20
+      "base_value": 20,
+      "image": "res://images/items/resources/metal_ingot.png",
+      "description": "Metal ingots used to make parts."
     },
     "iron": {
+      "name": "Iron",
       "resource_type": "metal",
       "color": "gray",
-      "base_value": 5
+      "base_value": 5,
+      "image": "res://images/items/resources/metal_ingot.png",
+      "description": "Metal ingots used to make parts."
     },
     "copper": {
+      "name": "Copper",
       "resource_type": "metal",
       "color": "sienna",
-      "base_value": 5
+      "base_value": 5,
+      "image": "res://images/items/resources/metal_ingot.png",
+      "description": "Metal ingots used to make parts."
     }
   },
   "parts": {
-    "table top": {},
-    "table leg": {}
+    "table_top": {
+      "name": "Table Top",
+      "base_value": 50,
+      "image": null,
+      "description": "The top part of a table."
+    },
+    "table_leg": {
+      "name": "Table Leg",
+      "base_value": 50,
+      "image": null,
+      "description": "One of four tegs for a table."
+    }
   },
   "products": {
-    "table": {}
+    "table": {
+      "name": "Table",
+      "base_value": 100,
+      "image": "res://images/items/products/table.png",
+      "description": "An elevated platform for item placement."
+    }
   }
 }

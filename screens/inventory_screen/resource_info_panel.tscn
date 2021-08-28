@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://screens/inventory_screen/info_panel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://screens/inventory_screen/scripts/resource_info_panel.gd" type="Script" id=2]
+
+[node name="InfoPanel" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="DataPanel" parent="VBoxContainer" index="0"]
+margin_bottom = 67.0
+
+[node name="MarginContainer" parent="VBoxContainer/DataPanel" index="0"]
+margin_bottom = 58.0
+
+[node name="VBoxContainer" parent="VBoxContainer/DataPanel/MarginContainer" index="0"]
+margin_bottom = 45.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DataPanel/MarginContainer/VBoxContainer" index="1"]
+margin_top = 21.0
+margin_right = 214.0
+margin_bottom = 41.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="TypeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/DataPanel/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_left = 78.0
+margin_right = 94.0
+margin_bottom = 20.0
+
+[node name="TypeLabel" type="Label" parent="VBoxContainer/DataPanel/MarginContainer/VBoxContainer/HBoxContainer/TypeVBoxContainer" index="0"]
+margin_right = 16.0
+margin_bottom = 8.0
+text = "Type"
+
+[node name="TypeDataLabel" type="Label" parent="VBoxContainer/DataPanel/MarginContainer/VBoxContainer/HBoxContainer/TypeVBoxContainer" index="1"]
+margin_top = 12.0
+margin_right = 16.0
+margin_bottom = 20.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DataPanel/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 110.0
+margin_right = 135.0
+margin_bottom = 20.0
+
+[node name="QualityLabel" type="Label" parent="VBoxContainer/DataPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" index="0"]
+margin_right = 25.0
+margin_bottom = 8.0
+text = "Quality"
+
+[node name="QualityDataLabel" type="Label" parent="VBoxContainer/DataPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" index="1"]
+margin_top = 12.0
+margin_right = 25.0
+margin_bottom = 20.0
+
+[node name="ItemContainer" parent="VBoxContainer" index="1"]
+margin_top = 67.0
+margin_bottom = 126.0
+
+[node name="PanelContainer" parent="VBoxContainer/ItemContainer" index="0"]
+margin_top = 4.0
+margin_bottom = 54.0
+
+[node name="Description" parent="VBoxContainer" index="2"]
+margin_top = 126.0
+
+[node name="RichTextLabel" parent="VBoxContainer/Description" index="0"]
+margin_bottom = 60.0

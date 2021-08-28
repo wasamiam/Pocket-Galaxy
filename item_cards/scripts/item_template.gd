@@ -9,6 +9,12 @@ var properties:Dictionary setget _set_properties
 var is_selected:bool setget _set_is_selected
 
 func _set_properties(p_properties):
+	if p_properties.has("image"):
+		get_node(item_image).texture = load(p_properties.image)
+	if p_properties.has("color"):
+		get_node(item_image).modulate = ColorN(p_properties.color)
+	if p_properties.has("quality"):
+		_set_quality_color(p_properties.quality)
 	properties = p_properties
 	
 func _set_quality_color(p_quality):

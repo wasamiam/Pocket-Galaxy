@@ -2,7 +2,7 @@
 
 [ext_resource path="res://fonts/m3x6.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://item_cards/scripts/part_old.gd" type="Script" id=2]
-[ext_resource path="res://images/pixil-frame-0(1).png" type="Texture" id=3]
+[ext_resource path="res://images/items/resources/metal_ingot.png" type="Texture" id=3]
 [ext_resource path="res://images/background item card(1).png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]

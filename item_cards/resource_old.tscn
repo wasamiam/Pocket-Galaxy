@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://item_cards/scripts/resource_old.gd" type="Script" id=1]
-[ext_resource path="res://images/pixil-frame-0(1).png" type="Texture" id=2]
+[ext_resource path="res://images/items/resources/metal_ingot.png" type="Texture" id=2]
 [ext_resource path="res://images/background item card(1).png" type="Texture" id=3]
 
 [node name="TextureButton" type="TextureButton"]

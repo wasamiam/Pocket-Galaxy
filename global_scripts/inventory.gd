@@ -24,6 +24,20 @@ var item_template = {
 	"base_value":0
 }
 
+var part_template = {
+	"id":"",
+	"name":"",
+	"quality":"",
+	"base_value":0
+}
+
+var product_template = {
+	"id":"",
+	"name":"",
+	"quality":"",
+	"base_value":0
+}
+
 var resources:Array
 var parts:Array
 var products:Array
@@ -70,6 +84,19 @@ func add_item(dictionary:Dictionary, item_type:int):
 			parts.append(dictionary)
 		ItemType.PRODUCT:
 			products.append(dictionary)
+		_:
+			assert(false, "item_type is out of bounds.")
+	
+	_save()
+
+func remove_item(p_item:Node):
+	match p_item.item_type:
+		"resource":
+			resources.remove(resources.find(p_item.properties))
+		"part":
+			parts.remove(parts.find(p_item.properties))
+		"product":
+			products.remove(products.find(p_item.properties))
 		_:
 			assert(false, "item_type is out of bounds.")
 	

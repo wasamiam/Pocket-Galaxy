@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://screens/workshop_screen/scripts/energy_bar.gd" type="Script" id=1]
+
+[node name="EnergyBar" type="PanelContainer"]
+margin_top = 18.0
+margin_right = 480.0
+margin_bottom = 28.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 479.0
+margin_bottom = 9.0
+
+[node name="EnergyLabel" type="Label" parent="HBoxContainer"]
+margin_right = 47.0
+margin_bottom = 8.0
+text = "Energy Left:"
+
+[node name="EnergyDataLabel" type="Label" parent="HBoxContainer"]
+margin_left = 51.0
+margin_right = 55.0
+margin_bottom = 8.0
+text = "0"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+margin_left = 59.0
+margin_right = 478.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+percent_visible = false

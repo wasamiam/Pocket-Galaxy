@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "CraftingStation",
+"language": "GDScript",
+"path": "res://crafting_stations/crafting_station.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Node",
+"class": "ItemProperties",
+"language": "GDScript",
+"path": "res://item_cards/components/item_properties.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"CraftingStation": "",
+"GitAPI": "",
+"ItemProperties": ""
 }
 
 [application]
@@ -54,6 +66,14 @@ singletons=[ "res://git_api.gdnlib" ]
 
 theme/custom="res://themes/main_theme.tres"
 theme/custom_font="res://fonts/default_font.tres"
+
+[input]
+
+use={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
