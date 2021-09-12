@@ -4,10 +4,10 @@
 [ext_resource path="res://images/tilemaps/Objects & Extras/$CP_Container.png" type="Texture" id=3]
 [ext_resource path="res://images/white_outline.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
 [node name="CraftingStation" type="Node2D" groups=[
@@ -24,13 +24,13 @@ region_rect = Rect2( 20, 5, 20, 20 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="UseArea" type="Area2D" parent="Sprite"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/UseArea"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="KeyToolTip" type="Label" parent="."]
 visible = false

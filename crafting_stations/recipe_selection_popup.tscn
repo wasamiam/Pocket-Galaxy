@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://crafting_stations/title_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://crafting_stations/recipe_selection_popup.gd" type="Script" id=2]
+
+[node name="RecipeSelectionPopup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+recipe_grid = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CenterContainer/GridContainer")
+scroll_container = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+margin_left = 239.0
+margin_top = 134.0
+margin_right = 241.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 92.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleBar" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_right = 91.0
+margin_bottom = 18.0
+
+[node name="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/TitleBar" index="0"]
+margin_right = 89.0
+
+[node name="TitleLabel" parent="CenterContainer/PanelContainer/VBoxContainer/TitleBar/HBoxContainer" index="0"]
+margin_right = 60.0
+text = "Recipe Selection"
+
+[node name="CloseButton" parent="CenterContainer/PanelContainer/VBoxContainer/TitleBar/HBoxContainer" index="1"]
+margin_left = 64.0
+margin_right = 87.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 91.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 86.0
+margin_bottom = 5.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer"]
+margin_right = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CenterContainer"]
+margin_left = 40.0
+margin_right = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[connection signal="close_window" from="CenterContainer/PanelContainer/VBoxContainer/TitleBar" to="." method="_on_TitleBar_close_window"]
+
+[editable path="CenterContainer/PanelContainer/VBoxContainer/TitleBar"]

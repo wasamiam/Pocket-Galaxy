@@ -1,15 +1,15 @@
 extends MarginContainer
 
-signal validate_ingredients
+signal validate_ingredients()
 
-export var amount_label:NodePath
 export var ingredient_label:NodePath
 export var button_container:NodePath
 
 onready var inventory = preload("res://screens/inventory_screen/inventory.tscn")
 
-var amount:int setget set_amount
-var ingredient:String setget set_ingredient
+var ingredient_name:String setget set_ingredient_name
+var ingredient_id:String
+var ingredient_type:String
 var item
 
 func _ready():
@@ -26,12 +26,13 @@ func _on_item_selected(p_item):
 	emit_signal("validate_ingredients")
 
 func _on_item_pressed(_p_item):
-	var child = inventory.instance()
-	child.is_selection_screen = true
-	child.filter.append(ingredient)
-	child.load_items()
-	child.connect("item_selected", self, "_on_item_selected")
-	get_tree().get_root().add_child(child)
+	var new_inventory = inventory.instance()
+	new_inventory.is_selection_screen = true
+	var filter := ingredient_type if ingredient_id == null else ingredient_id
+	var filter_id = new_inventory.FILTER_TYPE if ingredient_id == null else new_inventory.FILTER_ID
+	new_inventory.load_items(filter, filter_id)
+	new_inventory.connect("item_selected", self, "_on_item_selected")
+	get_tree().get_root().add_child(new_inventory)
 
 func has_item() -> bool:
 	if item == null:
@@ -39,13 +40,9 @@ func has_item() -> bool:
 	else:
 		return true
 
-func set_ingredient(value):
-	ingredient = value
+func set_ingredient_name(value):
+	ingredient_name = value
 	get_node(ingredient_label).text = value
-
-func set_amount(value):
-	amount = value
-	get_node(amount_label).text = String(value)
 
 func _on_Button_pressed():
 	_on_item_pressed(null)

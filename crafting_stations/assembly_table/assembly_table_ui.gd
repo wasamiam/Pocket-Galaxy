@@ -71,10 +71,6 @@ func _remove_ingredients():
 	for i in get_node(ingredient_grid).get_children():
 		i.queue_free()
 
-func _on_CloseButton_pressed():
-	get_tree().paused = false
-	self.queue_free()
-
 func _on_BuildButton_pressed():
 	var qualities = []
 	for i in ingredients:
@@ -88,3 +84,8 @@ func _on_BuildButton_pressed():
 	
 	get_tree().paused = false
 	queue_free()
+
+
+func _on_TitleBar_close_window():
+	get_tree().paused = false
+	self.queue_free()

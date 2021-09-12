@@ -14,30 +14,36 @@ var is_resource_tab_visible:bool setget _set_is_resource_tab_visible
 var is_part_tab_visible:bool setget _set_is_part_tab_visible
 var is_product_tab_visible:bool setget _set_is_product_tab_visible
 
-var filter:Array # Array of item ids to allow.
+enum {FILTER_ID, FILTER_TYPE}
 
 onready var resource_info_panel = preload("res://screens/inventory_screen/resource_info_panel.tscn")
 onready var part_info_panel = preload("res://screens/inventory_screen/part_info_panel.tscn")
 onready var product_info_panel = preload("res://screens/inventory_screen/product_info_panel.tscn")
 
-func _filter(p_items:Array, p_filter:Array) -> Array:
+func _filter(p_items:Array, p_filter:Array = [], p_filter_flag:int = FILTER_ID) -> Array:
 	if p_filter.empty():
 		return p_items
+	
 	var filtered_array = []
 	for i in p_items:
 		for f in p_filter:
-			if i.id == f:
-				filtered_array.append(i)
+			match p_filter_flag:
+				FILTER_ID:
+					if i.id == f:
+						filtered_array.append(i)
+				FILTER_TYPE:
+					if i.type == f:
+						filtered_array.append(i)
 	return filtered_array
 	
-func load_items():
+func load_items(p_filter:Array = [], p_filter_flag:int = FILTER_ID):
 	var resource = preload("res://item_cards/resource.tscn")
 	var part = preload("res://item_cards/part.tscn")
 	var product = preload("res://item_cards/product.tscn")
 	
-	_load_item_grid(_filter(Inventory.resources, filter), resource, resource_grid)
-	_load_item_grid(_filter(Inventory.parts, filter), part, part_grid)
-	_load_item_grid(_filter(Inventory.products, filter), product, product_grid)
+	_load_item_grid(_filter(Inventory.resources, p_filter, p_filter_flag), resource, resource_grid)
+	_load_item_grid(_filter(Inventory.parts, p_filter, p_filter_flag), part, part_grid)
+	_load_item_grid(_filter(Inventory.products, p_filter, p_filter_flag), product, product_grid)
 	
 func _load_item_grid(p_items:Array, p_item_card:Resource, p_grid:NodePath):
 	for i in p_items:

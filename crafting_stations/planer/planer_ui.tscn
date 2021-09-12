@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://crafting_stations/crafting_station_ui.tscn" type="PackedScene" id=1]
+[ext_resource path="res://crafting_stations/planer/planer_ui.gd" type="Script" id=2]
+
+[node name="PlanerUI" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" parent="PanelContainer/VBoxContainer/TitleBar" index="0"]
+margin_right = 476.0
+
+[node name="TitleLabel" parent="PanelContainer/VBoxContainer/TitleBar/HBoxContainer" index="0"]
+margin_right = 447.0
+text = "Planer"
+
+[node name="CloseButton" parent="PanelContainer/VBoxContainer/TitleBar/HBoxContainer" index="1"]
+margin_left = 451.0
+margin_right = 474.0
+
+[editable path="PanelContainer/VBoxContainer/TitleBar"]

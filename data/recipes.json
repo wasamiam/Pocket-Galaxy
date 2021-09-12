@@ -13,5 +13,13 @@
         "wood_plank": 4
       }
     }
+  },
+  "planer": {
+    "wood_plank": {
+      "name": "Wood Plank",
+      "recipe": {
+        "wood": 1
+      }
+    }
   }
 }

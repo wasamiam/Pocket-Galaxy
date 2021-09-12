@@ -14,10 +14,10 @@ var stack:Array
 func push(scene:String):
 	stack.push_front(get_tree().current_scene.filename)
 	var error = get_tree().change_scene(scene)
-	print("Error: " + error)
+	print("Error: ", error)
 	print("Push: ", stack)
 
 func pop():
 	var error = get_tree().change_scene(stack.pop_front())
-	print("Error: " + error)
+	print("Error: ", error)
 	print("Pop: ", stack)
