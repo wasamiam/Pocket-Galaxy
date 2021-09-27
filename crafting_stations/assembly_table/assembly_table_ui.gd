@@ -77,10 +77,9 @@ func _on_BuildButton_pressed():
 		qualities.append(i.item.properties.quality)
 		Inventory.remove_item(i.item)
 	var created_item = ItemDatabase.find_item(_selected.properties.id)
-	var item_type = ItemDatabase.find_item_type(_selected.properties.id)
 	created_item.id = _selected.properties.id
 	created_item.quality = ItemDatabase.combine_qualities(qualities)
-	Inventory.add_item(created_item, item_type)
+	Inventory.add_item(created_item)
 	
 	get_tree().paused = false
 	queue_free()

@@ -50,59 +50,27 @@ func _add_controls_for_type(node_path:NodePath, item_type:int):
 	get_node(node_path).add_child(quality_option)
 	get_node(node_path).add_child(add_button)
 	
+func _get_selected_item(selection_node_path:NodePath) -> String:
+	var name_id = get_node(selection_node_path).get_node("NameOption").selected
+	return get_node(selection_node_path).get_node("NameOption").get_item_text(name_id)
 
-# ! Need to fix. Load in database dictionary, and add extra keys as needed for Inventory dictionary.
+func _get_selected_quality(selection_node_path:NodePath) -> String:
+	var quality_id = get_node(selection_node_path).get_node("QualityOption").selected
+	return get_node(selection_node_path).get_node("QualityOption").get_item_text(quality_id)
+
+func _add_item_from_selection(selection_node_path:NodePath):
+	var new_item = ItemDatabase.get_item(_get_selected_item(selection_node_path))
+	new_item.quality = _get_selected_quality(selection_node_path)
+	Inventory.add_item(new_item)
+
 func _on_AddResourceButton_pressed():
-	var dictionary = Inventory.item_template.duplicate()
-	
-	var name_id = get_node(resource_selection).get_node("NameOption").selected
-	var item_name = get_node(resource_selection).get_node("NameOption").get_item_text(name_id)
-	var quality_id = get_node(resource_selection).get_node("QualityOption").selected
-	var item_quality = get_node(resource_selection).get_node("QualityOption").get_item_text(quality_id)
-	
-	dictionary.id = item_name
-	dictionary.name = ItemDatabase.resources[item_name].name
-	dictionary.resource_type = ItemDatabase.resources[item_name].resource_type
-	dictionary.image = ItemDatabase.resources[item_name].image
-	dictionary.quality = item_quality
-	dictionary.color = ItemDatabase.resources[item_name].color
-	dictionary.description = ItemDatabase.resources[item_name].description
-	dictionary.base_value = ItemDatabase.resources[item_name].base_value
-	
-	Inventory.add_item(dictionary, Inventory.ItemType.RESOURCE)
+	_add_item_from_selection(resource_selection)
 
 func _on_AddPartButton_pressed():
-	var dictionary = Inventory.part_template.duplicate()
-	
-	var name_id = get_node(part_selection).get_node("NameOption").selected
-	var item_name = get_node(part_selection).get_node("NameOption").get_item_text(name_id)
-	var quality_id = get_node(part_selection).get_node("QualityOption").selected
-	var item_quality = get_node(part_selection).get_node("QualityOption").get_item_text(quality_id)
-	
-	dictionary.id = item_name
-	dictionary.name = ItemDatabase.parts[item_name].name
-	dictionary.quality = item_quality
-	dictionary.description = ItemDatabase.parts[item_name].description
-	dictionary.base_value = ItemDatabase.parts[item_name].base_value
-	
-	Inventory.add_item(dictionary, Inventory.ItemType.PART)
+	_add_item_from_selection(part_selection)
 	
 func _on_AddProductButton_pressed():
-	var dictionary = Inventory.product_template.duplicate()
-	
-	var name_id = get_node(product_selection).get_node("NameOption").selected
-	var item_name = get_node(product_selection).get_node("NameOption").get_item_text(name_id)
-	var quality_id = get_node(product_selection).get_node("QualityOption").selected
-	var item_quality = get_node(product_selection).get_node("QualityOption").get_item_text(quality_id)
-	
-	dictionary.id = item_name
-	dictionary.name = ItemDatabase.products[item_name].name
-	dictionary.image = ItemDatabase.products[item_name].image
-	dictionary.quality = item_quality
-	dictionary.description = ItemDatabase.products[item_name].description
-	dictionary.base_value = ItemDatabase.products[item_name].base_value
-	
-	Inventory.add_item(dictionary, Inventory.ItemType.PRODUCT)
+	_add_item_from_selection(product_selection)
 
 func _on_ClearInventoryButton_pressed():
 	Inventory.clear_inventory()

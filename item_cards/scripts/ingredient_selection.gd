@@ -29,8 +29,9 @@ func _on_item_pressed(_p_item):
 	var new_inventory = inventory.instance()
 	new_inventory.is_selection_screen = true
 	var filter := ingredient_type if ingredient_id == null else ingredient_id
-	var filter_id = new_inventory.FILTER_TYPE if ingredient_id == null else new_inventory.FILTER_ID
-	new_inventory.load_items(filter, filter_id)
+	var filter_array = [filter]
+	var filter_id = new_inventory.FILTER_TYPE if ingredient_type != "" else new_inventory.FILTER_ID
+	new_inventory.load_items(filter_array, filter_id)
 	new_inventory.connect("item_selected", self, "_on_item_selected")
 	get_tree().get_root().add_child(new_inventory)
 

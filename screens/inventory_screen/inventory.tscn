@@ -130,6 +130,7 @@ margin_right = -9.0
 margin_bottom = -9.0
 
 [node name="PartGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Parts"]
+columns = 5
 
 [node name="Products" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer"]
 visible = false
@@ -144,6 +145,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ProductGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Products"]
+columns = 5
 
 [node name="InfoPanelContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 margin_left = 239.0

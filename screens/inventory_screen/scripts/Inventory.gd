@@ -24,6 +24,8 @@ func _filter(p_items:Array, p_filter:Array = [], p_filter_flag:int = FILTER_ID) 
 	if p_filter.empty():
 		return p_items
 	
+	print(p_filter_flag)
+	
 	var filtered_array = []
 	for i in p_items:
 		for f in p_filter:
@@ -41,16 +43,16 @@ func load_items(p_filter:Array = [], p_filter_flag:int = FILTER_ID):
 	var part = preload("res://item_cards/part.tscn")
 	var product = preload("res://item_cards/product.tscn")
 	
-	_load_item_grid(_filter(Inventory.resources, p_filter, p_filter_flag), resource, resource_grid)
-	_load_item_grid(_filter(Inventory.parts, p_filter, p_filter_flag), part, part_grid)
-	_load_item_grid(_filter(Inventory.products, p_filter, p_filter_flag), product, product_grid)
+	_load_item_grid(_filter(Inventory.items, p_filter, p_filter_flag), resource, resource_grid)
+	_load_item_grid(_filter(Inventory.items, p_filter, p_filter_flag), part, part_grid)
+	_load_item_grid(_filter(Inventory.items, p_filter, p_filter_flag), product, product_grid)
 	
 func _load_item_grid(p_items:Array, p_item_card:Resource, p_grid:NodePath):
 	for i in p_items:
-		var item = p_item_card.instance()
-		item.properties = i
-		item.connect("item_pressed", self, "_item_is_pressed")
-		get_node(p_grid).add_child(item)
+		var item_card = p_item_card.instance()
+		item_card.item = i
+		item_card.connect("item_pressed", self, "_item_is_pressed")
+		get_node(p_grid).add_child(item_card)
 	
 	_disable_empty_grid(p_grid)
 

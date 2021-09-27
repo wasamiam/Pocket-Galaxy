@@ -39,6 +39,14 @@
       "base_value": 5,
       "image": "res://images/items/resources/metal_ingot.png",
       "description": "Metal ingots used to make parts."
+    },
+    "oak": {
+      "name": "Oak",
+      "resource_type": "wood",
+      "color": "gray",
+      "base_value": 5,
+      "image": null,
+      "description": "Unprocessed wood used to make parts."
     }
   },
   "parts": {

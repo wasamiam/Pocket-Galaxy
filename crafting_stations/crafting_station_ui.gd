@@ -16,8 +16,9 @@ func _on_RecipeSelectionPopup_recipe_selected(p_item):
 	for i in p_item.properties.recipe:
 		for n in p_item.properties.recipe[i]:
 			var ing_sel = ingredient_selection.instance()
-			ing_sel.ingredient_type = ItemDatabase.find_item(i).type
-			ing_sel.ingredient_name = ItemDatabase.find_item(i).name
+			ing_sel.ingredient_type = i
+			ing_sel.ingredient_name = i
+			get_node(input_grid).add_child(ing_sel)
 	
 	
 	for i in get_node(output_grid).get_children():

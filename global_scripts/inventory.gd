@@ -16,33 +16,9 @@ var age = {
 	"new":1.0
 }
 
-var item_template = {
-	"name":"",
-	"resource_type":"",
-	"quality":"",
-	"color":"",
-	"base_value":0
-}
+var items:Array 
 
-var part_template = {
-	"id":"",
-	"name":"",
-	"quality":"",
-	"base_value":0
-}
-
-var product_template = {
-	"id":"",
-	"name":"",
-	"quality":"",
-	"base_value":0
-}
-
-var resources:Array
-var parts:Array
-var products:Array
-export var file_path:String = "user://inventory_save.json"
-
+export var file_path:String = "user://inventory.save"
 
 func _ready():
 	_load()
@@ -50,61 +26,44 @@ func _ready():
 func _load():
 	var file = File.new()
 	if !file.file_exists(file_path):
-		var error = file.open(file_path, File.WRITE)
-		assert(error == OK, "Failed to load inventory.")
-		file.store_line(to_json({"resources":[] ,"parts":[] ,"products":[]}))
-		file.close()
+		items = []
+		return
 	
 	var error = file.open(file_path, File.READ)
 	assert(error == OK, "Failed to load inventory.")
 	
-	var json = JSON.parse(file.get_as_text())
-	file.close()
+	items.clear()
 	
-	var inventory = json.result
-	resources = inventory.resources
-	parts = inventory.parts
-	products = inventory.products
+	while file.get_position() < file.get_len():
+		var item_dict = file.get_var()
+		var item = ItemDatabase.get_item(item_dict.id)
+		item.load_from_dict(item_dict)
+		items.append(item)
+		#item_dict = file.get_var()
+	
+	file.close()
 
 func _save():
-	var inventory = {"resources":resources ,"parts":parts ,"products":products }
-	
 	var file = File.new()
 	var error = file.open(file_path, File.WRITE)
 	assert(error == OK, "Failed to save.")
 	
-	file.store_line(to_json(inventory))
+	for i in items:
+		file.store_var(i.save_to_dict())
+	
 	file.close()
 
-func add_item(dictionary:Dictionary, item_type:int):
-	match item_type:
-		ItemType.RESOURCE:
-			resources.append(dictionary)
-		ItemType.PART:
-			parts.append(dictionary)
-		ItemType.PRODUCT:
-			products.append(dictionary)
-		_:
-			assert(false, "item_type is out of bounds.")
+func add_item(item:Item):
+	items.append(item)
 	
 	_save()
 
-func remove_item(p_item:Node):
-	match p_item.item_type:
-		"resource":
-			resources.remove(resources.find(p_item.properties))
-		"part":
-			parts.remove(parts.find(p_item.properties))
-		"product":
-			products.remove(products.find(p_item.properties))
-		_:
-			assert(false, "item_type is out of bounds.")
+func remove_item(p_item:Item):
+	items.erase(p_item)
 	
 	_save()
 
 func clear_inventory():
-	resources = []
-	parts = []
-	products = []
+	items.clear()
 	
 	_save()

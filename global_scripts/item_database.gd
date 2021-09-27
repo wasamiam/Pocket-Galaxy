@@ -26,7 +26,7 @@ func _ready():
 	_load()
 	_load_recipes()
 
-func find_item(p_item_id):
+func get_item(p_item_id):
 	if p_item_id in resources:
 		return resources[p_item_id].duplicate()
 	elif p_item_id in parts:
@@ -36,6 +36,7 @@ func find_item(p_item_id):
 	else:
 		assert(false, "Could not find item.")
 
+# Not needed.
 func find_item_type(p_item_id):
 	if p_item_id in resources:
 		return ItemType.RESOURCE
@@ -60,19 +61,27 @@ func _quality_int_to_string(p_quality:float):
 	assert(false, "Quality does not exist.")
 
 func _load():
-	var file = File.new()
-	var error = file.open(file_path, File.READ)
-	assert(error == OK, "Failed to load item_database.")
+	resources = _load_directory_to_dictionary("res://data/items/resources/")
+	parts = _load_directory_to_dictionary("res://data/items/parts/")
+	products = _load_directory_to_dictionary("res://data/items/products/")
+
+func _load_directory_to_dictionary(p_path:String) -> Dictionary:
+	var dictionary = {}
 	
-	var json = JSON.parse(file.get_as_text())
-	file.close()
+	var directory = Directory.new()
+	if directory.open(p_path) != OK:
+		assert(false, "Failed to load directory.")
+		return dictionary
 	
-	var database = json.result
-	resources = database.resources
-	parts = database.parts
-	products = database.products
+	directory.list_dir_begin(true)
+	var file_name = directory.get_next()
+	while file_name != "":
+		var item = load(p_path + file_name)
+		dictionary[item.id] = item
+		file_name = directory.get_next()
 	
-	
+	return dictionary
+
 func _load_recipes():
 	var file = File.new()
 	var error = file.open(recipe_file_path, File.READ)

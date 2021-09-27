@@ -5,18 +5,29 @@ signal item_pressed(item)
 export var item_image:NodePath
 export var highlight_image:NodePath
 
-var properties:Dictionary setget _set_properties
+var item:Item setget _set_item
+var properties:Dictionary setget _set_properties # Old
 var is_selected:bool setget _set_is_selected
 
+func _set_item(p_item:Item):
+	if "texture" in p_item:
+		get_node(item_image).texture = p_item.texture
+	if "color" in p_item:
+		get_node(item_image).modulate = p_item.color
+	if "quality" in p_item:
+		_set_quality_color(p_item.quality)
+	item = p_item
+
+# Old
 func _set_properties(p_properties):
-	if p_properties.has("image"):
+	if p_properties.has("image") and p_properties["image"] != null:
 		get_node(item_image).texture = load(p_properties.image)
 	if p_properties.has("color"):
 		get_node(item_image).modulate = ColorN(p_properties.color)
 	if p_properties.has("quality"):
 		_set_quality_color(p_properties.quality)
 	properties = p_properties
-	
+
 func _set_quality_color(p_quality):
 	match p_quality:
 		"poor":

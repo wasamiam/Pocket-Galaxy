@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/items/resource.gd" type="Script" id=1]
+[ext_resource path="res://images/items/resources/metal_ingot.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "steel"
+name = "Steel"
+color = Color( 0.262745, 0.286275, 0.360784, 1 )
+base_value = 10.0
+texture = ExtResource( 2 )
+description = "The bones of earth."
+resource_type = ""

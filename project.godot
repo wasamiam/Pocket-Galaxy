@@ -19,21 +19,21 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://git_api.gdns"
 }, {
+"base": "Resource",
+"class": "Item",
+"language": "GDScript",
+"path": "res://data/item.gd"
+}, {
 "base": "Node",
 "class": "ItemProperties",
 "language": "GDScript",
 "path": "res://item_cards/components/item_properties.gd"
-}, {
-"base": "Resource",
-"class": "TestResource",
-"language": "GDScript",
-"path": "res://data/test_resource.gd"
 } ]
 _global_script_class_icons={
 "CraftingStation": "",
 "GitAPI": "",
-"ItemProperties": "",
-"TestResource": ""
+"Item": "",
+"ItemProperties": ""
 }
 
 [application]
@@ -46,9 +46,9 @@ config/version=0.1
 [autoload]
 
 global="*res://global_scripts/global.gd"
+ItemDatabase="*res://global_scripts/item_database.gd"
 Navigator="*res://global_scripts/navigator.gd"
 Inventory="*res://global_scripts/inventory.gd"
-ItemDatabase="*res://global_scripts/item_database.gd"
 Signals="*res://global_scripts/signals.gd"
 
 [display]
